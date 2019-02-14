@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sheet.png-d5b70c58c9d1aaab0b0ea3cae975b2a2.stex"
+path="res://.import/fireball3.png-bf92d744c242056ce607195ca4aea32a.stex"
 
 [deps]
 
-source_file="res://sprites/player/sheet.png"
-dest_files=[ "res://.import/sheet.png-d5b70c58c9d1aaab0b0ea3cae975b2a2.stex" ]
+source_file="res://sprites/fireball/fireball3.png"
+dest_files=[ "res://.import/fireball3.png-bf92d744c242056ce607195ca4aea32a.stex" ]
 
 [params]
 

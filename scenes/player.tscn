@@ -1,14 +1,18 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/player/tile004.png" type="Texture" id=2]
-[ext_resource path="res://sprites/player/tile056.png" type="Texture" id=3]
-[ext_resource path="res://sprites/player/tile057.png" type="Texture" id=4]
-[ext_resource path="res://sprites/player/tile058.png" type="Texture" id=5]
-[ext_resource path="res://sprites/player/tile059.png" type="Texture" id=6]
-[ext_resource path="res://sprites/player/tile005.png" type="Texture" id=7]
-[ext_resource path="res://sprites/player/tile006.png" type="Texture" id=8]
-[ext_resource path="res://sprites/player/tile007.png" type="Texture" id=9]
+[ext_resource path="res://sprites/player/tile048.png" type="Texture" id=3]
+[ext_resource path="res://sprites/player/tile049.png" type="Texture" id=4]
+[ext_resource path="res://sprites/player/tile050.png" type="Texture" id=5]
+[ext_resource path="res://sprites/player/tile051.png" type="Texture" id=6]
+[ext_resource path="res://sprites/player/tile056.png" type="Texture" id=7]
+[ext_resource path="res://sprites/player/tile057.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player/tile058.png" type="Texture" id=9]
+[ext_resource path="res://sprites/player/tile059.png" type="Texture" id=10]
+[ext_resource path="res://sprites/player/tile005.png" type="Texture" id=11]
+[ext_resource path="res://sprites/player/tile006.png" type="Texture" id=12]
+[ext_resource path="res://sprites/player/tile007.png" type="Texture" id=13]
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -19,11 +23,16 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "attack",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "fly",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "walk",
 "speed": 8.0
@@ -34,7 +43,7 @@ animations = [ {
 custom_solver_bias = 0.0
 extents = Vector2( 16.8, 24.4 )
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 scale = Vector2( 0.5, 0.5 )
 input_pickable = false
@@ -43,19 +52,24 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
+position = Vector2( -30, -33.125 )
 frames = SubResource( 2 )
 animation = "idle"
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 visible = false
 position = Vector2( 1.25, 5 )
 shape = SubResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="." index="2"]
+
+position = Vector2( 50.875, 6.375 )
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 
 
